@@ -1,10 +1,11 @@
 package villagegaulois;
 
 import personnages.Gaulois;
+import produit.Produit;
 
-public class Etal implements IEtal {
+public class Etal<P extends Produit> implements IEtal {
 	private Gaulois vendeur;
-	private String[] produits;
+	private P[] produits;
 	private int quantiteDebutMarche;
 	private int quantite;
 	private boolean etalOccupe = false;
