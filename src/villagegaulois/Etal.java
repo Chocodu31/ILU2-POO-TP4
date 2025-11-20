@@ -5,11 +5,19 @@ import produit.Produit;
 
 public class Etal<P extends Produit> implements IEtal {
 	private Gaulois vendeur;
-	private P[] produits;
+	private P[] produit;
 	private int quantiteDebutMarche;
 	private int quantite;
+	private int nbProduit = 0;
 	private boolean etalOccupe = false;
 	private int prix;
+	
+	public void installerVendeur(Gaulois vendeur, P[] produit, int prix) {
+		this.vendeur = vendeur;
+		this.produit = produit;
+		this.prix = prix;
+		this.nbProduit = produit.length;
+	}
 	
 	@Override
 	public boolean isEtalOccupe() {

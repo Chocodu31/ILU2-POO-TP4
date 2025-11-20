@@ -49,8 +49,9 @@ public class ScenarioTest {
 		Poisson poisson1 = new Poisson("lundi");
 		Poisson[] poissons = {poisson1};
 		
-		IEtal[] marché = new Etal[3];
-		
+		IEtal[] marche = new Etal[3];
+		Etal<Sanglier>[] Etal1sanglier;
+		Etal<Sanglier>[] Etal2sanglier;
 		
 	}
 
