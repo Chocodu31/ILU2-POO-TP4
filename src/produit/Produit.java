@@ -14,5 +14,5 @@ public abstract class Produit {
 	}
 	
 	
-	public abstract void dÃ©crireProduit();
+	public abstract void décrireProduit();
 }
