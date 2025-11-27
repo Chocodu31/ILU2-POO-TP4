@@ -1,7 +1,7 @@
 package produit;
 
 public class Poisson extends Produit{
-	String datePeche;
+	private String datePeche;
 	
 	public Poisson(String datePeche) {
 		super("poisson", Unite.PIECE);
@@ -9,8 +9,13 @@ public class Poisson extends Produit{
 	}
 	
 	@Override
-	public void d�crireProduit() {
-		System.out.println(nom + " pêchés " + datePeche + ".");
+	public String decrireProduit() {
+		return nom + " pêchés " + datePeche + ".";
+	}
+
+	@Override
+	public int calculerPrix(int prix) {
+		return prix;
 	}
 	
 	

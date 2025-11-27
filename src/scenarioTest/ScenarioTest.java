@@ -35,8 +35,8 @@ public class ScenarioTest {
 	}
 
 	public static void main(String[] args) {
-		Gaulois ordralfabetix = new Gaulois("Ordralfab�tix",9);
-		Gaulois obelix = new Gaulois("Ob�lix",20);
+		Gaulois ordralfabetix = new Gaulois("Ordralfabétix",9);
+		Gaulois obelix = new Gaulois("Obélix",20);
 		Gaulois asterix = new Gaulois("Asterix", 6);
 		
 		Sanglier sanglier1 = new Sanglier(2000, obelix);
@@ -49,9 +49,52 @@ public class ScenarioTest {
 		Poisson poisson1 = new Poisson("lundi");
 		Poisson[] poissons = {poisson1};
 		
-		IEtal[] marche = new Etal[3];
-		Etal<Sanglier>[] Etal1sanglier;
-		Etal<Sanglier>[] Etal2sanglier;
+		IEtal[] marche = new IEtal[3];
+		Etal<Sanglier> Etal1sanglier = new Etal<Sanglier>();
+		Etal<Sanglier> Etal2sanglier = new Etal<Sanglier>();
+		Etal<Poisson> Etalpoisson = new Etal<Poisson>();
+		
+		marche[0] = Etal1sanglier;
+		marche[1] = Etal2sanglier;
+		marche[2] = Etalpoisson;
+		
+		Etal2sanglier.installerVendeur(obelix, sangliersObelix, 8);
+		Etal1sanglier.installerVendeur(asterix, sangliersAsterix, 10);
+		Etalpoisson.installerVendeur(ordralfabetix, poissons, 7);
+
+		System.out.println(Etal1sanglier.etatEtal());
+		System.out.println(Etal2sanglier.etatEtal());
+		System.out.println(Etalpoisson.etatEtal());
+		
+		int i = 0;
+		int jeveux = 3;
+		while (jeveux != 0) {
+			int possible = marche[i].contientProduit("sanglier", jeveux);
+			if (possible < jeveux) {
+				if (possible == 0) {
+					if (i==marche.length-1) break;
+					i++;
+				} else {
+					System.out.println("Achat etal n*" + i);
+					System.out.println("J'ai payé " + marche[i].acheterProduit(possible));
+					jeveux-=possible;
+					System.out.println("J'ai acheter " + possible + " il me reste a acheter " + jeveux);
+					if (i==marche.length-1) break;
+					i++;
+				}
+			}
+			if (possible > jeveux) {
+				System.out.println("Achat etal n*" + i);
+				System.out.println("J'ai payé " + marche[i].acheterProduit(jeveux));
+				System.out.println("J'ai acheter " + jeveux + "\n");
+				jeveux=0;
+			}
+		}
+		
+		System.out.println(Etal1sanglier.etatEtal());
+		System.out.println(Etal2sanglier.etatEtal());
+		System.out.println(Etalpoisson.etatEtal());
+		
 		
 	}
 
